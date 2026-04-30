@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav>
+    <h2>Ansh</h2>
+    <div>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="/login">Admin</a>
+    </div>
+</nav>
+
+<header>
+    <h1>Hi, I'm Ansh 👋</h1>
+    <p>Aspiring Full Stack Developer</p>
+</header>
+
+<section id="projects">
+    <h2>My Projects</h2>
+    <div class="project-container">
+        {% for project in projects %}
+        <div class="card">
+            <h3>{{ project[1] }}</h3>
+            <p>{{ project[2] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact Me</h2>
+    <form action="/contact" method="POST">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="message" placeholder="Message"></textarea>
+        <button>Send</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2026 Ansh | Built with Flask</p>
+</footer>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
